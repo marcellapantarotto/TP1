@@ -33,4 +33,3 @@ void Ball::display()
 {
   std::cout<<x<<" "<<y<<std::endl ;
 }
-
