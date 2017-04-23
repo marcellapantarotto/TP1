@@ -12,6 +12,11 @@ Ball::Ball()
 xmin(-1), xmax(1), ymin(-1), ymax(1)
 { }
 
+Ball::Ball(double _x, double _y){
+	this->x = _x;
+	this->y = _y;
+}
+
 void Ball::step(double dt)
 {
   double xp = x + vx * dt ;
@@ -32,4 +37,20 @@ void Ball::step(double dt)
 void Ball::display()
 {
   std::cout<<x<<" "<<y<<std::endl ;
+}
+
+void Ball::setx(double _x){
+  this->x = _x;
+}
+
+double Ball::getx(){
+  return x;
+}
+
+void Ball::sety(double _y){
+  this->y = _y;
+}
+
+double Ball::gety(){
+  return y;
 }

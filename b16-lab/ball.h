@@ -16,7 +16,8 @@ public:
   void step(double dt) ;
   void display() ;
 
-  // Get and Fet of the position of the ball
+  Ball(double _x, double _y);
+  // Get and Set of the position of the ball
   void setx(double _x);
   double getx();
   void sety(double _y);
@@ -43,21 +44,5 @@ protected:
   double ymin ;
   double ymax ;
 } ;
-
-void Ball::setx(double _x){
-  x = _x;
-}
-
-double Ball::getx(){
-  return x;
-}
-
-void Ball::sety(double _y){
-  y = _y;
-}
-
-double Ball::gety(){
-  return y;
-}
 
 #endif /* defined(__ball__) */
