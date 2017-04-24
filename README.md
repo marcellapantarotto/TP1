@@ -1,8 +1,5 @@
 # TP1
-This project aims to simulate a bouncing ball, in free fall, inside a delimited box. It is desenvolved in C++ and compiled with G++ GNU Compiler version 5.4.0.
-
-### Requisitions
-The **iostream** library
+This project aims to simulate a bouncing ball, in free fall, inside a delimited box. It is desenvolved in C++ and compiled with G++ GNU Compiler version 5.4.0. And the only library request is the **iostream** library.
 
 ### Compilation
 The command line used to compile the program was first this one: `g++ ball.cpp test-ball.cpp -o ball`
@@ -20,7 +17,7 @@ Created with GnuPlotting
 
 ![grafic](https://github.com/marcellapantarotto/TP1/blob/master/result_grafic_plotting.png?raw=true)
 
-#### Output
+### Output
 ```
 0.01 -0.00877778
 0.02 -0.0284444
