@@ -6,16 +6,18 @@
 #include "ball.h"
 
 #include <iostream>
+#include <stdio.h>
 
 Ball::Ball()
-: r(0.1), x(0), y(0), vx(0.3), vy(-0.1), g(9.8), m(1),
+: r(0.1), /*x(0), y(0),*/ vx(0.3), vy(-0.1), g(9.8), m(1),
 xmin(-1), xmax(1), ymin(-1), ymax(1)
 { }
 
+/*
 Ball::Ball(double _x, double _y){
 	this->x = _x;
 	this->y = _y;
-}
+}*/
 
 void Ball::step(double dt)
 {
@@ -36,19 +38,30 @@ void Ball::step(double dt)
 
 void Ball::display()
 {
-  std::cout<<x<<" "<<y<<std::endl ;
+	std::cout<<x<<" "<<y<<std::endl ;
 }
 
-void Ball::setx(double _x){
-  this->x = _x;
+void Ball::setx(double x){
+	do{
+		std::cout << "\n" << std::endl;
+		std::cout << "Enter a value for the ball's coordinate X (-1 < X < 1):" << std::endl;
+		std::cin >> x;
+		std::cout << "" << std::endl;
+	}while(-1 >= x || x >= 1);
+	this->x = x;
 }
 
 double Ball::getx(){
   return x;
 }
 
-void Ball::sety(double _y){
-  this->y = _y;
+void Ball::sety(double y){
+	do{
+		std::cout << "Enter a value for the ball's coordinate Y (-1 < Y < 1):" << std::endl;
+		std::cin >> y;
+		std::cout << "\n" << std::endl;
+	}while(-1 >= y || y >= 1);
+	this->y = y;
 }
 
 double Ball::gety(){

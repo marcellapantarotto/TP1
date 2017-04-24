@@ -16,11 +16,11 @@ public:
   void step(double dt) ;
   void display() ;
 
-  Ball(double _x, double _y);
+  Ball(double x, double y);
   // Get and Set of the position of the ball
-  void setx(double _x);
+  void setx(double x);
   double getx();
-  void sety(double _y);
+  void sety(double y);
   double gety();
 
 protected:
