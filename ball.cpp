@@ -13,11 +13,11 @@ Ball::Ball()
 xmin(-1), xmax(1), ymin(-1), ymax(1)
 { }
 
-/*
-Ball::Ball(double _x, double _y){
-	this->x = _x;
-	this->y = _y;
-}*/
+
+Ball::Ball(double x, double y){
+	this->x = x;
+	this->y = y;
+}
 
 void Ball::step(double dt)
 {
