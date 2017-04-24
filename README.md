@@ -13,11 +13,12 @@ Then, with the use of GDB it became: `g++ -g ball.cpp test-ball.cpp -o ball`
 - **simultaion.h**  has the class Simulation, witch contains only virtual methods
 
 ### Grafic
-Created with GnuPlotting
+Created with GnuPlotting and considering initial coordinates (x, y) = (0, 0)
 
 ![grafic](https://github.com/marcellapantarotto/TP1/blob/master/result_grafic_plotting.png?raw=true)
 
 ### Output
+Wtih the ball's initial coordinates (x, y) = (0, 0)
 ```
 0.01 -0.00877778
 0.02 -0.0284444
