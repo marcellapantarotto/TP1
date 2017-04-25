@@ -1,29 +1,32 @@
 # TP1
-This project aims to simulate a bouncing ball, in free fall, inside a delimited box. It is desenvolved in C++ and compiled with G++ GNU Compiler version 5.4.0. As request, it has the `iostream` and `stdio` librarys.
+This project aims to simulate a bouncing ball, in free fall, inside a delimited box (1x1). It is desenvolved in C++ and compiled with G++ GNU Compiler version 5.4.0. As request, it has the `iostream` and `stdio` libraries.
 
 ### Compilation
 The command line used to compile the program was first this one: `g++ ball.cpp test-ball.cpp -o ball`
 
 Then, with the use of GDB it became: `g++ -g ball.cpp test-ball.cpp -o ball`
 
+And to execute: `./ball`
+
 ### Files
 - **ball.cpp**  desenvolves the methods and constructors of the class Ball and where you will find the set() and get() methods
 - **ball.h**    has the class Ball with it's attributes and methods, this class inherits virtual methods from Simulation class
 - **test-ball.cpp** defines the time interval (dt) and, besides having the main functions, it has the run function and also calls the functions: step(dt), display(), set() and get()
-- **simultaion.h**  has the class Simulation witch contains only virtual methods, that are responsible to build the interface between programs
+- **simulation.h**  has the class Simulation witch contains only virtual methods, that are responsible to build the interface between programs
 
 ### Class Diagram
 Created with the help of `https://www.lucidchart.com/`
 
 ![diagram](https://github.com/marcellapantarotto/TP1/blob/master/class_diagram.png?raw=true)
 
-### Grafic
-Created considering initial coordinates (x, y) = (0, 0), with GnuPlot version 5.0 patchlevel 3. 
+### Graphic
+Created considering initial coordinates (x, y) = (0, 0), with GnuPlot version 5.0 patchlevel 3.
 
 ![grafic](https://github.com/marcellapantarotto/TP1/blob/master/result_grafic_plotting.png?raw=true)
 
 ### Output
-Wtih the ball's initial coordinates (x, y) = (0, 0)
+With the ball's initial coordinates (x, y) = (0, 0).
+
 ```
 0.01 -0.00877778
 0.02 -0.0284444
