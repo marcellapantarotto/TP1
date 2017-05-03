@@ -134,6 +134,7 @@ SpringMass::SpringMass(double gravity)
 
 void SpringMass::display()
 {
+  // f = m * a;
 
 /* INCOMPLETE: TYPE YOUR CODE HERE */
 

@@ -63,7 +63,8 @@ protected:
   double mass ;
   double radius ;
 
-  double xmin ;
+  // box limitations: x = horizontal, y= vertical
+  double xmin ; 
   double xmax ;
   double ymin ;
   double ymax ;
@@ -76,7 +77,7 @@ protected:
 class Spring
 {
 public:
-  Spring(Mass * mass1, Mass * mass2, double naturalLength, double stiff, double damping = 0.01) ;
+  Spring(Mass * mass1, Mass * mass2, double naturalLength, double stiffness, double damping = 0.01) ;
   Mass * getMass1() const ;
   Mass * getMass2() const ;
   Vector2 getForce() const ;
@@ -86,7 +87,12 @@ public:
 protected:
 
 /* INCOMPLETE: TYPE YOUR CODE HERE */
-
+  Mass mass1;
+  Mass mass2;
+  double naturalLength;
+  double stiffness;
+  double damping;
+  // ponteiros
 } ;
 
 /* ---------------------------------------------------------------- */
@@ -107,11 +113,18 @@ public:
 
 protected:
   double gravity ;
-
+  double dt;
 
 /* INCOMPLETE: TYPE YOUR CODE HERE */
+  typedef std::vecctor<Masses> double;
+  typedef std::vecctor<Springs> double;
+
+private:
+  double masses[2];
+  double springs[1];
 
 } ;
+
 
 #endif /* defined(__springmass__) */
 
