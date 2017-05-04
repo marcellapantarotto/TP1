@@ -59,15 +59,20 @@ double Mass::getEnergy(double gravity) const
 {
   double energy = 0 ;
 
-/* INCOMPLETE: TYPE YOUR CODE HERE 
+/* INCOMPLETE: TYPE YOUR CODE HERE */
 
-  height = radius /position(centro)
+  double h = position.y - radius - ymin;
 
-  e_potential = mass * gravity * height;
-  e_kinetics = (mass * |velocity|^2) / 2;
-  energy = e_potential + e_kinetics;
 
-*/
+  /*
+    if(this.getPosition().y < 0){
+      h = 1 - this.getPosition().y;
+    }else{
+      h = 1 + this.getPosition().y;
+    }
+  */
+
+  energy =  this.mass * gravity * h + 0.5 * this.mass * this.velocity.norm2();    // m*g*h + 0.5*m*v^2
 
   return energy ;
 }
@@ -82,6 +87,20 @@ void Mass::step(double dt)
   velocity = velocity0 + a*dt;
 
 
+  double xp = getPosition().x + getVelocity().x * dt ;
+  double yp = getPosition().y + getVelocity().y * dt - 0.5 * gravity * dt * dt ;
+  if (xmin + r <= xp && xp <= xmax - r) {
+    setPosition().x = xp ;
+  } else {
+    vx = -vx ;
+  }
+  if (ymin + r <= yp && yp <= ymax - r) {
+    y = yp ;
+    vy = vy - gravity * dt ;
+  } else {
+    vy = -vy ;
+  }
+
 */
 
 }
@@ -89,10 +108,6 @@ void Mass::step(double dt)
 /* ---------------------------------------------------------------- */
 // class Spring
 /* ---------------------------------------------------------------- */
-/*
-Spring::Spring()
-: mass1(), mass2(), naturalLength(), stiffness(), damping()
-{ }*/
 
 Spring::Spring(Mass * mass1, Mass * mass2, double naturalLength, double stiffness, double damping)
 : mass1(mass1), mass2(mass2), naturalLength(naturalLength), stiffness(stiffness), damping(damping)
@@ -111,8 +126,18 @@ Mass * Spring::getMass2() const
 Vector2 Spring::getForce() const
 {
   Vector2 F ;
+  double x1, x2, velocity1, velocity2, u12, v12, F1;
 
+  if((x1-x1-naturalLength) != 0){
+      if((x2-x1) < 0){
+          u12 = -1;
+      }else{
+        u12 = 1;
+      }
+      v12 = dot((velocity2 - velocity1)*u12)*u12;
+  }
 /* INCOMPLETE: TYPE YOUR CODE HERE */
+
 
   return F ;
 }

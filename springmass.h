@@ -35,6 +35,7 @@ inline Vector2 operator- (Vector2 a, Vector2 b) { return Vector2(a.x-b.x, a.y-b.
 inline Vector2 operator* (double a, Vector2 b)  { return Vector2(a*b.x, a*b.y) ; }
 inline Vector2 operator* (Vector2 a, double b)  { return Vector2(a.x*b, a.y*b) ; }
 inline Vector2 operator/ (Vector2 a, double b)  { return Vector2(a.x/b, a.y/b) ; }
+inline Vector2 operator/ (double b, Vector2 a)  { return Vector2(b/a.x, b/a.y);}    // new
 inline double dot(Vector2 a, Vector2 b) { return a.x*b.x + a.y*b.y ; }
 
 /* ---------------------------------------------------------------- */
@@ -47,7 +48,7 @@ public:
   Mass() ;
   Mass(Vector2 position, Vector2 velocity, double mass, double radius) ;
   void setForce(Vector2 f) ;
-  void addForce(Vector2 f) ;
+  void addForce(Vector2 f) ;<
   Vector2 getForce() const ;
   Vector2 getPosition() const ;
   Vector2 getVelocity() const ;
@@ -93,7 +94,6 @@ protected:
   double naturalLength;
   double stiffness;
   double damping;
-  // ponteiros
 } ;
 
 /* ---------------------------------------------------------------- */
@@ -109,7 +109,7 @@ public:
   double getEnergy() const ;
 
 /* INCOMPLETE: TYPE YOUR CODE HERE */
-  void addMass(Vector2 position, Vector2 velocity, double mass, double radius);
+  void addMass(Mass m);
   void addSpring(Mass * mass1, Mass* mass2, double naturalLength, double stiffness, double damping = 0.01);
 
 
@@ -131,14 +131,11 @@ protected:
   double damping;
 
 
-//  typedef std::vector<Mass> double;
-//  typedef std::vector<Spring> double;
+  typedef std::vector<Mass> masses_t;
+  typedef std::vector<Spring> springs_t;
 
-private:
-  double masses[2];
-  double springs[1];
-  double *v_masses = masses;
-  double *v_springs = springs;
+  masses_t masses;
+  springs_t springs;
 
 } ;
 

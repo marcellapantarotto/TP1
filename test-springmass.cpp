@@ -17,6 +17,9 @@ int main(int argc, char** argv)
   Mass m2(Vector2(+.5,0), Vector2(), mass, radius) ;
 
 /* INCOMPLETE: TYPE YOUR CODE HERE */
+  Mass m(Vector2(+.5,0), Vector2(), mass, radius);
+
+
 
   const double dt = 1.0/30 ;
   for (int i = 0 ; i < 100 ; ++i) {
