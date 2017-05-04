@@ -77,6 +77,7 @@ protected:
 class Spring
 {
 public:
+  Spring();
   Spring(Mass * mass1, Mass * mass2, double naturalLength, double stiffness, double damping = 0.01) ;
   Mass * getMass1() const ;
   Mass * getMass2() const ;
@@ -87,8 +88,8 @@ public:
 protected:
 
 /* INCOMPLETE: TYPE YOUR CODE HERE */
-  Mass mass1;
-  Mass mass2;
+  Mass * mass1;
+  Mass * mass2;
   double naturalLength;
   double stiffness;
   double damping;
@@ -107,21 +108,37 @@ public:
   void display() ;
   double getEnergy() const ;
 
-
 /* INCOMPLETE: TYPE YOUR CODE HERE */
+  void addMass(Vector2 position, Vector2 velocity, double mass, double radius);
+  void addSpring(Mass * mass1, Mass* mass2, double naturalLength, double stiffness, double damping = 0.01);
 
 
 protected:
   double gravity ;
-  double dt;
 
 /* INCOMPLETE: TYPE YOUR CODE HERE */
-  typedef std::vecctor<Masses> double;
-  typedef std::vecctor<Springs> double;
+  double dt;
+
+  Vector2 position;
+  Vector2 velocity;
+  double mass;
+  double radius;
+
+  Mass * mass1;
+  Mass * mass2;
+  double naturalLength;
+  double stiffness;
+  double damping;
+
+
+//  typedef std::vector<Mass> double;
+//  typedef std::vector<Spring> double;
 
 private:
   double masses[2];
   double springs[1];
+  double *v_masses = masses;
+  double *v_springs = springs;
 
 } ;
 
