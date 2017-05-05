@@ -109,8 +109,8 @@ public:
   double getEnergy() const ;
 
 /* INCOMPLETE: TYPE YOUR CODE HERE */
-  void addMass(Mass m);
-  void addSpring(Mass * mass1, Mass* mass2, double naturalLength, double stiffness, double damping = 0.01);
+  int addMass(Mass m);
+  int addSpring(Mass * mass1, Mass* mass2, double naturalLength, double stiffness, double damping = 0.01);
 
 
 protected:
