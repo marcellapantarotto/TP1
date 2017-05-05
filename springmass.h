@@ -48,7 +48,7 @@ public:
   Mass() ;
   Mass(Vector2 position, Vector2 velocity, double mass, double radius) ;
   void setForce(Vector2 f) ;
-  void addForce(Vector2 f) ;<
+  void addForce(Vector2 f) ;
   Vector2 getForce() const ;
   Vector2 getPosition() const ;
   Vector2 getVelocity() const ;
@@ -119,10 +119,7 @@ protected:
 /* INCOMPLETE: TYPE YOUR CODE HERE */
   double dt;
 
-  Vector2 position;
-  Vector2 velocity;
-  double mass;
-  double radius;
+  Mass m;
 
   Mass * mass1;
   Mass * mass2;

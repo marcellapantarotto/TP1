@@ -63,16 +63,15 @@ double Mass::getEnergy(double gravity) const
 
   double h = position.y - radius - ymin;
 
-
   /*
     if(this.getPosition().y < 0){
-      h = 1 - this.getPosition().y;
+      h = 1 - this->getPosition().y;
     }else{
-      h = 1 + this.getPosition().y;
+      h = 1 + this->getPosition().y;
     }
   */
 
-  energy =  this.mass * gravity * h + 0.5 * this.mass * this.velocity.norm2();    // m*g*h + 0.5*m*v^2
+  energy =  this->mass * gravity * h + 0.5 * this->mass * this->velocity.norm2();    // m*g*h + 0.5*m*v^2
 
   return energy ;
 }
@@ -85,23 +84,25 @@ void Mass::step(double dt)
   F = m * a -> a = m/F;
   S = S0 + velocity * dt (a*dt^2)/2;
   velocity = velocity0 + a*dt;
-
-
-  double xp = getPosition().x + getVelocity().x * dt ;
-  double yp = getPosition().y + getVelocity().y * dt - 0.5 * gravity * dt * dt ;
-  if (xmin + r <= xp && xp <= xmax - r) {
-    setPosition().x = xp ;
-  } else {
-    vx = -vx ;
-  }
-  if (ymin + r <= yp && yp <= ymax - r) {
-    y = yp ;
-    vy = vy - gravity * dt ;
-  } else {
-    vy = -vy ;
-  }
-
 */
+
+  double a = mass / force.y;
+  double xp = getPosition().x + getVelocity().x * dt ;
+  double yp = getPosition().y + getVelocity().y * dt - 0.5 * a * dt * dt ;
+
+  if (xmin + radius <= xp && xp <= xmax - radius) {
+    position.x = xp ;
+  } else {
+    velocity.x = -velocity.x ;
+  }
+ 
+  if (ymin + radius <= yp && yp <= ymax - radius) {
+    position.y = yp ;
+    velocity.y = velocity.y - a * dt ;
+  } else {
+    velocity.y = -velocity.y ;
+  }
+
 
 }
 
@@ -126,15 +127,21 @@ Mass * Spring::getMass2() const
 Vector2 Spring::getForce() const
 {
   Vector2 F ;
-  double x1, x2, velocity1, velocity2, u12, v12, F1;
+  double u12, v12, F1;
 
-  if((x1-x1-naturalLength) != 0){
-      if((x2-x1) < 0){
+  Vector2 x1 = mass1->getPosition();
+  Vector2 x2 = mass2->getPosition();
+
+  Vector2 velocity1 = mass1->getVelocity();
+  Vector2 velocity2 = mass2->getVelocity();
+
+  if((x1.x - x2.x - naturalLength) != 0){
+      if((x2.x - x1.x) < 0){
           u12 = -1;
       }else{
         u12 = 1;
       }
-      v12 = dot((velocity2 - velocity1)*u12)*u12;
+      v12 = dot((velocity2 - velocity1), u12)*u12;
   }
 /* INCOMPLETE: TYPE YOUR CODE HERE */
 
@@ -180,6 +187,11 @@ void SpringMass::display()
   // f = m * a;
 
 /* INCOMPLETE: TYPE YOUR CODE HERE */
+  int i;
+
+  for(i = 0; i < masses.size(); ++i){
+    std::cout << masses[i] << std::endl;
+  }
 
 }
 
@@ -197,11 +209,21 @@ void SpringMass::step(double dt)
   Vector2 g(0,-gravity) ;
 
 /* INCOMPLETE: TYPE YOUR CODE HERE */
-  masses[i].setForce(g * masses[i].getMass());
-  springs[i].getMass1()->addForce(-1 * force);
-  springs[i].getMass2()->addForce(+1 * force);
-  step();
+  int i;
 
+  for(i = 0; i < masses.size(); ++i){
+    masses[i].setForce(g * masses[i].getMass());
+  }
+
+  for(i = 0; i < masses.size(); ++i){
+    Vector2 force = springs[i].getForce();
+    springs[i].getMass1()->addForce(-1 * force);
+    springs[i].getMass2()->addForce(+1 * force);  
+  }
+
+  for(i = 0; i < masses.size(); ++i){
+    masses[i].step(dt);
+  }
 }
 
 
