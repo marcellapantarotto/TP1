@@ -129,6 +129,15 @@ Vector2 Spring::getForce() const  //incomplete
   Vector2 F ;
 
   /* INCOMPLETE: TYPE YOUR CODE HERE */
+
+  double l = getLength();
+  Vector2 u12 = (1.0/l)*(mass2->getPosition() - mass1->getPosition());
+  Vector2 unitary = u12/l;
+  double v12 = dot((mass2->getVelocity() - mass1->getVelocity()),unitary);
+  double forceMode = (naturalLength - l) * stiffness + v12*damping;
+  F = forceMode * unitary;
+
+  /*
   double u12, v12, F1;
 
   Vector2 x1 = mass1->getPosition();
@@ -144,7 +153,7 @@ Vector2 Spring::getForce() const  //incomplete
         u12 = 1;
       }
       v12 = dot((velocity2 - velocity1), u12)*u12;
-  }
+  }*/
 
   return F ;
 }
@@ -205,13 +214,15 @@ double SpringMass::getEnergy() const
   double energy = 0 ;
 
 /* INCOMPLETE: TYPE YOUR CODE HERE */
+  energy = mass1->getEnergy(gravity) + mass2->getEnergy(gravity) + spring->getEnergy() ;
+  //energy = mass1->getEnergy(gravity) + mass2->getEnergy(gravity) + spring->getEnergy();
 
   return energy ;
 }
 
 void SpringMass::step(double dt)
 {
-  Vector2 g(0,-gravity) ;
+  Vector2 g(0,-gravity) ; // gravity vector: acceleration pointing down
 
 /* INCOMPLETE: TYPE YOUR CODE HERE */
   int i;
@@ -229,6 +240,14 @@ void SpringMass::step(double dt)
   for(i = 0; i < masses.size(); ++i){
     masses[i].step(dt);
   }
+
+
+  // mass1->setForce(g);
+  // mass2->setForce(g);
+  // mass1->addForce(spring->getForce());
+  // mass2->addForce(-1.0*spring->getForce());
+  // mass1->step(dt);
+  // mass2->step(dt);
 }
 
 
@@ -240,9 +259,9 @@ int SpringMass::addMass(Mass m)
   return (int)masses.size() -1;
 }
 
-int SpringMass::addSpring(Mass * mass1, Mass* mass2, double naturalLength, double stiffness, double damping)
+int SpringMass::addSpring(Mass * mass1, Mass * mass2, Spring * spring, double naturalLength, double stiffness, double damping)
 {
-  springs.push_back(s);
+  springs.push_back(Spring &spring);
   return (int)springs.size();
 }
 

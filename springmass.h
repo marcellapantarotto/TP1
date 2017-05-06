@@ -103,14 +103,18 @@ protected:
 class SpringMass : public Simulation
 {
 public:
-  SpringMass(double gravity = MOON_GRAVITY) ;
+  SpringMass(Mass * mass1, Mass * mass2, Spring * spring, double gravity = MOON_GRAVITY) ;
+  Mass* getMass1() const;
+  Mass* getMass2() const;
+  Spring* getSpring(Mass mass1, Mass mass2);
+
   void step(double dt) ;
   void display() ;
   double getEnergy() const ;
 
 /* INCOMPLETE: TYPE YOUR CODE HERE */
   int addMass(Mass m);
-  int addSpring(Mass * mass1, Mass* mass2, double naturalLength, double stiffness, double damping = 0.01);
+  int addSpring(Mass * mass1, Mass* mass2, Spring * spring, double naturalLength, double stiffness, double damping = 0.01);
 
 
 protected:
@@ -123,10 +127,10 @@ protected:
 
   Mass * mass1;
   Mass * mass2;
+  Spring * spring;
   double naturalLength;
   double stiffness;
   double damping;
-
 
   typedef std::vector<Mass> masses_t;
   typedef std::vector<Spring> springs_t;
