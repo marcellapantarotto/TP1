@@ -133,7 +133,8 @@ protected:
   double damping;
 
   typedef std::vector<Mass> masses_t;
-  typedef std::vector<Spring> springs_t;
+  typedef std::vector<Spring * > springs_t;
+
 
   masses_t masses;
   springs_t springs;

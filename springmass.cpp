@@ -62,16 +62,9 @@ double Mass::getEnergy(double gravity) const
 /* INCOMPLETE: TYPE YOUR CODE HERE */
 
   double h = position.y - radius - ymin;
-
-  /*
-    if(this.getPosition().y < 0){
-      h = 1 - this->getPosition().y;
-    }else{
-      h = 1 + this->getPosition().y;
-    }
-  */
-
-  energy =  this->mass * gravity * h + 0.5 * this->mass * this->velocity.norm2();    // m*g*h + 0.5*m*v^2
+  double e_potential = this->mass * gravity * h;;
+  double e_kinetic = 0.5 * this->mass * this->velocity.norm2();
+  energy = e_potential + e_kinetic;
 
   return energy ;
 }
@@ -79,12 +72,7 @@ double Mass::getEnergy(double gravity) const
 void Mass::step(double dt)  //incomplete
 {
 
-/* INCOMPLETE: TYPE YOUR CODE HERE
-
-  F = m * a -> a = m/F;
-  S = S0 + velocity * dt (a*dt^2)/2;
-  velocity = velocity0 + a*dt;
-*/
+/* INCOMPLETE: TYPE YOUR CODE HERE */
 
   double a = mass / force.y;
   double xp = getPosition().x + getVelocity().x * dt ;
@@ -92,6 +80,7 @@ void Mass::step(double dt)  //incomplete
 
   if (xmin + radius <= xp && xp <= xmax - radius) {
     position.x = xp ;
+    velocity.x = velocity.x;
   } else {
     velocity.x = -velocity.x ;
   }
@@ -102,7 +91,6 @@ void Mass::step(double dt)  //incomplete
   } else {
     velocity.y = -velocity.y ;
   }
-
 
 }
 
@@ -131,29 +119,11 @@ Vector2 Spring::getForce() const  //incomplete
   /* INCOMPLETE: TYPE YOUR CODE HERE */
 
   double l = getLength();
-  Vector2 u12 = (1.0/l)*(mass2->getPosition() - mass1->getPosition());
+  Vector2 u12 = (1.0/l) * (mass2->getPosition() - mass1->getPosition());
   Vector2 unitary = u12/l;
-  double v12 = dot((mass2->getVelocity() - mass1->getVelocity()),unitary);
-  double forceMode = (naturalLength - l) * stiffness + v12*damping;
+  double v12 = dot((mass2->getVelocity() - mass1->getVelocity()), unitary);
+  double forceMode = (naturalLength - l) * stiffness + v12 * damping;
   F = forceMode * unitary;
-
-  /*
-  double u12, v12, F1;
-
-  Vector2 x1 = mass1->getPosition();
-  Vector2 x2 = mass2->getPosition();
-
-  Vector2 velocity1 = mass1->getVelocity();
-  Vector2 velocity2 = mass2->getVelocity();
-
-  if((x1.x - x2.x - naturalLength) != 0){
-      if((x2.x - x1.x) < 0){
-          u12 = -1;
-      }else{
-        u12 = 1;
-      }
-      v12 = dot((velocity2 - velocity1), u12)*u12;
-  }*/
 
   return F ;
 }
@@ -215,7 +185,6 @@ double SpringMass::getEnergy() const
 
 /* INCOMPLETE: TYPE YOUR CODE HERE */
   energy = mass1->getEnergy(gravity) + mass2->getEnergy(gravity) + spring->getEnergy() ;
-  //energy = mass1->getEnergy(gravity) + mass2->getEnergy(gravity) + spring->getEnergy();
 
   return energy ;
 }
@@ -232,22 +201,15 @@ void SpringMass::step(double dt)
   }
 
   for(i = 0; i < masses.size(); ++i){
-    Vector2 force = springs[i].getForce();
-    springs[i].getMass1()->addForce(-1 * force);
-    springs[i].getMass2()->addForce(+1 * force);  
+    Vector2 force = springs[i]->getForce();
+    springs[i]->getMass1()->addForce(-1 * force);
+    springs[i]->getMass2()->addForce(+1 * force);  
   }
 
   for(i = 0; i < masses.size(); ++i){
     masses[i].step(dt);
   }
 
-
-  // mass1->setForce(g);
-  // mass2->setForce(g);
-  // mass1->addForce(spring->getForce());
-  // mass2->addForce(-1.0*spring->getForce());
-  // mass1->step(dt);
-  // mass2->step(dt);
 }
 
 
@@ -261,7 +223,7 @@ int SpringMass::addMass(Mass * mass1, Mass * mass2)
 
 int SpringMass::addSpring(Mass * mass1, Mass * mass2, Spring * spring, double naturalLength, double stiffness, double damping)
 {
-  springs.push_back(Spring spring);
+  springs.push_back(spring);
   return (int)springs.size();
 }
 

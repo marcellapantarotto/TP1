@@ -21,11 +21,6 @@ int main(int argc, char** argv)
 /* INCOMPLETE: TYPE YOUR CODE HERE */
   Mass m(Vector2(+.5,0), Vector2(), mass, radius);
 
-  // Spring newspring(&m1, &m2, naturalLength, stiffness, damping);
-  // springmass.addMass(m1);
-  // springmass.addMass(m2);
-  // springmass.addSpring(&m1, &m2,naturalLength, stiffness, damping);
-
   Spring spring(&m1, &m2, naturalLength, stiffness);
   SpringMass springmass(&m1, &m2);
 
