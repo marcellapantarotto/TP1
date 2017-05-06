@@ -187,7 +187,7 @@ std::ostream& operator << (std::ostream& os, const Spring& s)
 // class SpringMass : public Simulation
 /* ---------------------------------------------------------------- */
 
-SpringMass::SpringMass(double gravity)
+SpringMass::SpringMass(Mass * mass1, Mass * mass2, double gravity)
 : gravity(gravity)
 { }
 
