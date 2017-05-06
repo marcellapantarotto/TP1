@@ -27,7 +27,7 @@ int main(int argc, char** argv)
   // springmass.addSpring(&m1, &m2,naturalLength, stiffness, damping);
 
   Spring spring(&m1, &m2, naturalLength, stiffness);
-  SpringMass springmass(&m1, &m2, &spring);
+  SpringMass springmass(&m1, &m2);
 
   const double dt = 1.0/30 ;
   for (int i = 0 ; i < 100 ; ++i) {

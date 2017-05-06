@@ -253,7 +253,7 @@ void SpringMass::step(double dt)
 
 /* INCOMPLETE: TYPE YOUR CODE HERE */
 
-int SpringMass::addMass(Mass m)
+int SpringMass::addMass(Mass * mass1, Mass * mass2)
 {  
   masses.push_back(m);
   return (int)masses.size() -1;
@@ -261,7 +261,7 @@ int SpringMass::addMass(Mass m)
 
 int SpringMass::addSpring(Mass * mass1, Mass * mass2, Spring * spring, double naturalLength, double stiffness, double damping)
 {
-  springs.push_back(Spring &spring);
+  springs.push_back(Spring spring);
   return (int)springs.size();
 }
 
