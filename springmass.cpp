@@ -69,7 +69,7 @@ double Mass::getEnergy(double gravity) const
   return energy ;
 }
 
-void Mass::step(double dt)  //incomplete
+void Mass::step(double dt)  
 {
 
 /* INCOMPLETE: TYPE YOUR CODE HERE */
@@ -98,7 +98,7 @@ void Mass::step(double dt)  //incomplete
 // class Spring
 /* ---------------------------------------------------------------- */
 
-Spring::Spring(Mass * mass1, Mass * mass2, double naturalLength, double stiffness, double damping)
+Spring::Spring(Mass *mass1, Mass *mass2, double naturalLength, double stiffness, double damping)
 : mass1(mass1), mass2(mass2), naturalLength(naturalLength), stiffness(stiffness), damping(damping)
 { }
 
@@ -112,7 +112,7 @@ Mass * Spring::getMass2() const
   return mass2 ;
 }
 
-Vector2 Spring::getForce() const  //incomplete
+Vector2 Spring::getForce() const 
 {
   Vector2 F ;
 
@@ -157,7 +157,7 @@ std::ostream& operator << (std::ostream& os, const Spring& s)
 // class SpringMass : public Simulation
 /* ---------------------------------------------------------------- */
 
-SpringMass::SpringMass(Mass * mass1, Mass * mass2, double gravity)
+SpringMass::SpringMass(Mass *mass1, Mass *mass2, double gravity)
 : gravity(gravity)
 { }
 
@@ -168,15 +168,17 @@ void SpringMass::display()
 /* INCOMPLETE: TYPE YOUR CODE HERE */
   int i;
 
-  for(i = 0; i < masses.size(); ++i){
-    std::cout << masses[i] << std::endl;
-  }
+  // for(i = 0; i < masses.size(); ++i){
+  //   std::cout << (this->masses[i]).getPosition().x << ", " << (this->masses[i]).getPosition().y << std::endl ;
+  // }
 
-  for(i = 0; i < springs.size(); ++i){
-    std::cout << springs[i] << std::endl;
-  }
+  // for(i = 0; i < springs.size(); ++i){
+  //   std::cout << (this->springs[i])->getLength() << std::endl;
+  // }
 
-  //print total energy -> missing
+
+  std::cout << "Mass" << i << " (" << (this->masses[i]).getPosition().x << "," << (this->masses[i]).getPosition().y << ")" << std::endl;
+  std::cout << "Spring Length " << (this->spring)->getLength() << std::endl;
 }
 
 double SpringMass::getEnergy() const
@@ -215,13 +217,13 @@ void SpringMass::step(double dt)
 
 /* INCOMPLETE: TYPE YOUR CODE HERE */
 
-int SpringMass::addMass(Mass * mass1, Mass * mass2)
+int SpringMass::addMass(Mass *mass1, Mass *mass2)
 {  
   masses.push_back(m);
   return (int)masses.size() -1;
 }
 
-int SpringMass::addSpring(Mass * mass1, Mass * mass2, Spring * spring, double naturalLength, double stiffness, double damping)
+int SpringMass::addSpring(Mass *mass1, Mass *mass2, Spring *spring, double naturalLength, double stiffness, double damping)
 {
   springs.push_back(spring);
   return (int)springs.size();

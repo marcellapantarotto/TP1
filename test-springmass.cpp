@@ -12,7 +12,7 @@ int main(int argc, char** argv)
   const double mass = 0.05 ;
   const double radius = 0.02 ;
   const double naturalLength = 0.95 ;
-  const double stiffness = 1;
+  const double stiffness = 1.0;
   const double damping = 0.01;
 
   Mass m1(Vector2(-.5,0), Vector2(), mass, radius) ;
@@ -20,6 +20,10 @@ int main(int argc, char** argv)
 
 /* INCOMPLETE: TYPE YOUR CODE HERE */
   Mass m(Vector2(+.5,0), Vector2(), mass, radius);
+
+  // masses_t massVector;
+  // massVector.push_back(&m1);
+  // massVector.push_back(&m2);
 
   Spring spring(&m1, &m2, naturalLength, stiffness);
   SpringMass springmass(&m1, &m2);
