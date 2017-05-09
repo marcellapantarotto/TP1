@@ -107,42 +107,18 @@ class SpringMass : public Simulation
 {
 public:
   SpringMass(masses_t massVector, Spring *s, double gravity);
-  //SpringMass(Mass *mass1, Mass *mass2, double gravity) ;
-  // Mass* getMass1() const;
-  // Mass* getMass2() const;
-  // Spring* getSpring(Mass mass1, Mass mass2);
-
   void step(double dt) ;
   void display() ;
   double getEnergy() const ;
 
-/* INCOMPLETE: TYPE YOUR CODE HERE */
-  // int addMass(Mass *mass1, Mass *mass2);
-  // int addSpring(Mass *mass1, Mass *mass2, Spring *spring, double naturalLength, double stiffness, double damping = 0.01);
-
-
 protected:
-  double gravity ;
-
-/* INCOMPLETE: TYPE YOUR CODE HERE */
+  double gravity;
   double dt;
-
-  //Mass m;
-
-  // Mass *mass1; //  git
-  // Mass *mass2; // git
   Spring *spring;
   double naturalLength;
   double stiffness;
   double damping;
-
-  //typedef std::vector<Mass> masses_t;
-  //typedef std::vector<Spring *> springs_t;
-
   masses_t masses;
-  //springs_t springs;
-
 } ;
-
 
 #endif /* defined(__springmass__) */
