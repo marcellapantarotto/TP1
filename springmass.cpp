@@ -59,39 +59,53 @@ double Mass::getEnergy(double gravity) const
 {
   double energy = 0 ;
 
-/* INCOMPLETE: TYPE YOUR CODE HERE */
-
   double h = position.y - radius - ymin;
   double e_potential = this->mass * gravity * h;;
   double e_kinetic = 0.5 * this->mass * this->velocity.norm2();
   energy = e_potential + e_kinetic;
+  std::cout << "Mass getEnergy" << std::endl;
 
   return energy ;
 }
 
-void Mass::step(double dt)  
+void Mass::step(double dt, double gravity)  
 {
 
 /* INCOMPLETE: TYPE YOUR CODE HERE */
 
-  double a = mass / force.y;
-  double xp = getPosition().x + getVelocity().x * dt ;
-  double yp = getPosition().y + getVelocity().y * dt - 0.5 * a * dt * dt ;
+  //std::cout << "Mass step" << std::endl;
 
-  if (xmin + radius <= xp && xp <= xmax - radius) {
-    position.x = xp ;
-    velocity.x = velocity.x;
+  Vector2 acceleration, newVelocity, newPosition;
+  acceleration.x = this->getForce().x / this->getMass();
+  acceleration.y = this->getForce().y / this-> getMass();
+
+  // calculating new velocity and position por X
+  newVelocity.x = this->getVelocity().x + acceleration.x * dt;
+  newPosition.x = this->position.x + (this->getVelocity().x * dt) + (0.5 * acceleration.x * dt * dt);
+  // moving X
+  if (xmin + radius <= newPosition.x && newPosition.x <= xmax - radius)
+  {
+    this->position.x = newPosition.x;
+    this->velocity.x = this->getVelocity().x + acceleration.x * dt;
+    std::cout << "Mass step if1" << std::endl;
   } else {
-    velocity.x = -velocity.x ;
-  }
- 
-  if (ymin + radius <= yp && yp <= ymax - radius) {
-    position.y = yp ;
-    velocity.y = velocity.y - a * dt ;
-  } else {
-    velocity.y = -velocity.y ;
+    this->velocity.x = -(this->velocity.x);
+    std::cout << "Mass step if1else" << std::endl;
   }
 
+  //calculating new velocity and position for Y
+  newVelocity.y = this->getVelocity().y + (- gravity + acceleration.y) * dt;
+  newPosition.y = this->position.y + (this->getVelocity().y * dt) + (0.5 * (- gravity + acceleration.y) * dt * dt);
+  // moving Y
+  if (ymin + radius <= newPosition.y && newPosition.y <= ymax - radius)
+  {
+    this->position.y = newPosition.y;
+    this->velocity.y = newVelocity.y - gravity * dt;
+    std::cout << "Mass step if2" << std::endl;
+  } else {
+    this->velocity.y = -(this->velocity.y);
+    std::cout << "Mass step if2else" << std::endl;
+  }
 }
 
 /* ---------------------------------------------------------------- */
@@ -124,6 +138,7 @@ Vector2 Spring::getForce() const
   double v12 = dot((mass2->getVelocity() - mass1->getVelocity()), unitary);
   double forceMode = (naturalLength - l) * stiffness + v12 * damping;
   F = forceMode * unitary;
+  std::cout << "Spring getForce" << std::endl;
 
   return F ;
 }
@@ -157,36 +172,32 @@ std::ostream& operator << (std::ostream& os, const Spring& s)
 // class SpringMass : public Simulation
 /* ---------------------------------------------------------------- */
 
-SpringMass::SpringMass(Mass *mass1, Mass *mass2, double gravity)
-: gravity(gravity)
+SpringMass::SpringMass(masses_t masses, Spring *s, double gravity)
+: masses(masses), spring(s), gravity(gravity)
 { }
 
 void SpringMass::display()
 {
-  // f = m * a;
+  for(int i = 0; i < (this->masses).size(); ++i)
+  {
+    std::cout << (this->masses[i])->getPosition().x << " " << (this->masses[i])->getPosition().y << std::endl ;
 
-/* INCOMPLETE: TYPE YOUR CODE HERE */
-  int i;
-
-  // for(i = 0; i < masses.size(); ++i){
-  //   std::cout << (this->masses[i]).getPosition().x << ", " << (this->masses[i]).getPosition().y << std::endl ;
-  // }
-
-  // for(i = 0; i < springs.size(); ++i){
-  //   std::cout << (this->springs[i])->getLength() << std::endl;
-  // }
-
-
-  std::cout << "Mass" << i << " (" << (this->masses[i]).getPosition().x << "," << (this->masses[i]).getPosition().y << ")" << std::endl;
-  std::cout << "Spring Length " << (this->spring)->getLength() << std::endl;
+  // for(int i = 0; i < springs.size(); ++i){
+  //   std::cout << "Spring Length " << (this->springs[i])->getLength() << std::endl;
+  }
 }
 
 double SpringMass::getEnergy() const
 {
   double energy = 0 ;
 
-/* INCOMPLETE: TYPE YOUR CODE HERE */
-  energy = mass1->getEnergy(gravity) + mass2->getEnergy(gravity) + spring->getEnergy() ;
+  for(int i = 0; i < (this->masses).size(); ++i)
+  {
+    energy += (this->masses[i])->getEnergy(this->gravity);
+    std::cout << "SpringMass getEnergy for" << std::endl;
+  }
+  energy += (this->spring)->getEnergy();
+  std::cout << "SpringMass getEnergy" << std::endl;
 
   return energy ;
 }
@@ -195,38 +206,21 @@ void SpringMass::step(double dt)
 {
   Vector2 g(0,-gravity) ; // gravity vector: acceleration pointing down
 
-/* INCOMPLETE: TYPE YOUR CODE HERE */
-  int i;
-
-  for(i = 0; i < masses.size(); ++i){
-    masses[i].setForce(g * masses[i].getMass());
+  for(int i = 0; i < (this->masses).size(); ++i)
+  {
+    (this->masses[i])->setForce(g);
+    std::cout << "SpringMass step for1" << std::endl;
+  }
+  
+  for (int i = 0; i < (this->masses).size(); ++i)
+  {
+    (this->masses[i])->addForce(spring->getForce());
+    std::cout << "SpringMass step for2" << std::endl;
   }
 
-  for(i = 0; i < masses.size(); ++i){
-    Vector2 force = springs[i]->getForce();
-    springs[i]->getMass1()->addForce(-1 * force);
-    springs[i]->getMass2()->addForce(+1 * force);  
+  for (int i = 0; i < (this->masses).size(); ++i)
+  {
+    (this->masses[i])->step(dt, gravity);
+    std::cout << "SpringMass step for3" << std::endl;
   }
-
-  for(i = 0; i < masses.size(); ++i){
-    masses[i].step(dt);
-  }
-
 }
-
-
-/* INCOMPLETE: TYPE YOUR CODE HERE */
-
-int SpringMass::addMass(Mass *mass1, Mass *mass2)
-{  
-  masses.push_back(m);
-  return (int)masses.size() -1;
-}
-
-int SpringMass::addSpring(Mass *mass1, Mass *mass2, Spring *spring, double naturalLength, double stiffness, double damping)
-{
-  springs.push_back(spring);
-  return (int)springs.size();
-}
-
-
