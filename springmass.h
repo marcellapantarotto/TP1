@@ -55,7 +55,7 @@ public:
   double getMass() const ;
   double getRadius() const ;
   double getEnergy(double gravity) const ;
-  void step(double dt) ;
+  void step(double dt, double gravity) ;
 
 protected:
   Vector2 position ;
@@ -70,6 +70,8 @@ protected:
   double ymin ;
   double ymax ;
 } ;
+
+typedef std::vector<Mass *> masses_t;
 
 /* ---------------------------------------------------------------- */
 // class Spring
@@ -94,6 +96,7 @@ protected:
   double naturalLength;
   double stiffness;
   double damping;
+  double force;
 } ;
 
 /* ---------------------------------------------------------------- */
@@ -103,18 +106,19 @@ protected:
 class SpringMass : public Simulation
 {
 public:
-  SpringMass(Mass *mass1, Mass *mass2, double gravity = MOON_GRAVITY) ;
-  Mass* getMass1() const;
-  Mass* getMass2() const;
-  Spring* getSpring(Mass mass1, Mass mass2);
+  SpringMass(masses_t massVector, Spring *s, double gravity);
+  //SpringMass(Mass *mass1, Mass *mass2, double gravity) ;
+  // Mass* getMass1() const;
+  // Mass* getMass2() const;
+  // Spring* getSpring(Mass mass1, Mass mass2);
 
   void step(double dt) ;
   void display() ;
   double getEnergy() const ;
 
 /* INCOMPLETE: TYPE YOUR CODE HERE */
-  int addMass(Mass *mass1, Mass *mass2);
-  int addSpring(Mass *mass1, Mass *mass2, Spring *spring, double naturalLength, double stiffness, double damping = 0.01);
+  // int addMass(Mass *mass1, Mass *mass2);
+  // int addSpring(Mass *mass1, Mass *mass2, Spring *spring, double naturalLength, double stiffness, double damping = 0.01);
 
 
 protected:
@@ -123,21 +127,20 @@ protected:
 /* INCOMPLETE: TYPE YOUR CODE HERE */
   double dt;
 
-  Mass m;
+  //Mass m;
 
-  Mass *mass1;
-  Mass *mass2;
+  // Mass *mass1; //  git
+  // Mass *mass2; // git
   Spring *spring;
   double naturalLength;
   double stiffness;
   double damping;
 
-  typedef std::vector<Mass> masses_t;
-  typedef std::vector<Spring *> springs_t;
-
+  //typedef std::vector<Mass> masses_t;
+  //typedef std::vector<Spring *> springs_t;
 
   masses_t masses;
-  springs_t springs;
+  //springs_t springs;
 
 } ;
 

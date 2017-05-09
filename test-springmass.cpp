@@ -4,6 +4,7 @@
  **/
 
 #include "springmass.h"
+#include <iostream>
 
 int main(int argc, char** argv)
 {
@@ -12,26 +13,30 @@ int main(int argc, char** argv)
   const double mass = 0.05 ;
   const double radius = 0.02 ;
   const double naturalLength = 0.95 ;
-  const double stiffness = 1.0;
+  const double stiffness = 1;
   const double damping = 0.01;
+  const double dt = 1.0/30 ;
 
   Mass m1(Vector2(-.5,0), Vector2(), mass, radius) ;
   Mass m2(Vector2(+.5,0), Vector2(), mass, radius) ;
 
 /* INCOMPLETE: TYPE YOUR CODE HERE */
-  Mass m(Vector2(+.5,0), Vector2(), mass, radius);
+  //Mass m(Vector2(+.5,0), Vector2(), mass, radius);
 
-  // masses_t massVector;
-  // massVector.push_back(&m1);
-  // massVector.push_back(&m2);
+  masses_t masses;
+  masses.push_back(&m1);
+  masses.push_back(&m2);
+  Spring spring(&m1, &m2, naturalLength, stiffness, damping);
 
-  Spring spring(&m1, &m2, naturalLength, stiffness);
-  SpringMass springmass(&m1, &m2);
+  // Spring spring(&m1, &m2, naturalLength, stiffness); // velho git
+  SpringMass springmass(masses, &spring, MOON_GRAVITY);
 
-  const double dt = 1.0/30 ;
-  for (int i = 0 ; i < 100 ; ++i) {
+  std::cout << "test"<< std::endl;
+
+  for (int i = 0 ; i < 100 ; i++) {
     springmass.step(dt) ;
     springmass.display() ;
+    std::cout << "test for"<< std::endl;
   }
 
   return 0 ;
