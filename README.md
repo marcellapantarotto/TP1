@@ -147,11 +147,12 @@ And to execute: `./springmass`
 
 ### Class Diagram
 Created with the help of `https://www.lucidchart.com/`
+![diagram](https://github.com/marcellapantarotto/TP1/blob/master/class_diagram.png?raw=true)
 
 ### Graphic
 Created considering initial coordinates (x, y) = (0, 0), with GnuPlot version 5.0 patchlevel 3.
 
-![grafic](https://github.com/marcellapantarotto/TP1/blob/master/springmass_graphic.png)
+![grafic](https://github.com/marcellapantarotto/TP1/blob/master/Springmass_classdiagram.png)
 
 ### Output
 This represents the programs output, expressed in the `output_springmass`.
