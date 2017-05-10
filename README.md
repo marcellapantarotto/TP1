@@ -18,7 +18,7 @@ And to execute: `./ball`
 - **test-ball.cpp** defines the time interval (dt) and, besides having the main functions, it has the run function and also calls the functions: `step(dt)`, `display()`, `set()` and `get()`.
 
 ### Class Diagram
-Created with the help of `https://www.lucidchart.com/`
+Created with the help of `https://www.lucidchart.com/`, expressed in the `class_diagram.png` file.
 ![diagram](https://github.com/marcellapantarotto/TP1/blob/master/class_diagram.png?raw=true)
 
 ### Graphic
@@ -149,7 +149,7 @@ And to execute: `./springmass`
 - **test-springmass.cpp** creates the objects mass1 and mass2, with a connecting spring, end calculates the movement of the balls while they are in free fall. The time interval `(dt)` determined here helps to create the frames for an output, that latter was used to generate the plot analyses. 
 
 ### Class Diagram
-Created with the help of `https://www.lucidchart.com/`
+Created with the help of `https://www.lucidchart.com/`, expressed in the `Springmass_classdiagram.png` file.
 ![diagram](https://github.com/marcellapantarotto/TP1/blob/master/Springmass_classdiagram.png)
 
 ### Graphic
