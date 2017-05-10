@@ -22,7 +22,7 @@ Created with the help of `https://www.lucidchart.com/`, expressed in the `class_
 ![diagram](https://github.com/marcellapantarotto/TP1/blob/master/class_diagram.png?raw=true)
 
 ### Graphic
-Created, with the use of GnuPlot version 5.0 patchlevel 3, considering the ball's initial coordinates (x, y) = (0, 0). Using these command lines:
+Expressed in the `result_grafic_plotting.png` file, it was created with the use of GnuPlot version 5.0 patchlevel 3, considering the ball's initial coordinates (x, y) = (0, 0). Using these command lines:
 ```
 $ gnuplot
 gnuplot> plot 'result_output'
@@ -153,7 +153,7 @@ Created with the help of `https://www.lucidchart.com/`, expressed in the `Spring
 ![diagram](https://github.com/marcellapantarotto/TP1/blob/master/Springmass_classdiagram.png)
 
 ### Graphic
-Created considering initial coordinates at: Mass1(x, y) = (-0.5, 0) and Mass2(x, y) = (0.5, 0), and with the use of GnuPlot version 5.0 patchlevel 3. The command lines used were:
+Expressed in the `springmass_graphic.png` file, it was created considering initial coordinates at: Mass1(x, y) = (-0.5, 0) and Mass2(x, y) = (0.5, 0), and with the use of GnuPlot version 5.0 patchlevel 3. The command lines used were:
 ```
 $ gnuplot
 gnuplot> plot 'output_springmass'
