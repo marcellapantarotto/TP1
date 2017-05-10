@@ -15,7 +15,7 @@ And to execute: `./ball`
 - **simulation.h**  has the class `Simulation()` witch contains only virtual methods, that are responsible to build the interface between programs.
 - **ball.h**    has the class Ball with it's attributes and methods, this class inherits virtual methods from Simulation class.
 - **ball.cpp**  desenvolves the methods and constructors of the class Ball and where you will find the set() and get() methods.
-- **test-ball.cpp** defines the time interval (dt) and, besides having the main functions, it has the run function and also calls the functions: `step(dt)`, `display()`, `set()` and `get()`.
+- **test-ball.cpp** defines the time interval (dt) and, besides having the main functions, it has the run function and also calls the methods: `step(dt)`, `display()`, `set()` and `get()`.
 
 ### Class Diagram
 Created with the help of `https://www.lucidchart.com/`, expressed in the `class_diagram.png` file.
