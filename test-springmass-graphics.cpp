@@ -14,8 +14,10 @@
 class SpringMassDrawable : public SpringMass, public Drawable
 /* ---------------------------------------------------------------- */
 {
-
-/* INCOMPLETE: TYPE YOUR CODE HERE */
+	private:
+		Figure figure;
+	public:
+		SpringMassDrawable():
 
 } ;
 

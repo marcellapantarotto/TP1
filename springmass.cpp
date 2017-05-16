@@ -72,8 +72,8 @@ void Mass::step(double dt, double gravity)
   acceleration.y = this->getForce().y / this-> getMass();
 
   // calculating new velocity and position por X
-  newVelocity.x = this->getVelocity().x + acceleration.x * dt;
-  newPosition.x = this->position.x + (this->getVelocity().x * dt) + (0.5 * acceleration.x * dt * dt);
+  newVelocity.x = this->getVelocity().x - acceleration.x * dt;
+  newPosition.x = this->position.x + (this->getVelocity().x * dt) - (0.5 * acceleration.x * dt * dt);
   // moving X
   if (xmin + radius <= newPosition.x && newPosition.x <= xmax - radius)
   {
@@ -155,8 +155,12 @@ std::ostream& operator << (std::ostream& os, const Spring& s)
 // class SpringMass : public Simulation
 /* ---------------------------------------------------------------- */
 
-SpringMass::SpringMass(masses_t masses, Spring *s, double gravity)
-: masses(masses), spring(s), gravity(gravity)
+// SpringMass::SpringMass(masses_t masses, Spring *s, double gravity)
+// : masses(masses), spring(s), gravity(gravity)
+// { }
+
+SpringMass::SpringMass()
+: mass1(mass1), mass2(mass2), spring(spring), gravity(gravity)
 { }
 
 void SpringMass::display()
@@ -198,4 +202,21 @@ void SpringMass::step(double dt)
   {
     (this->masses[i])->step(dt, gravity);
   }
+}
+
+int SpringMass::addMass(Mass *m)
+{  
+	this->masses.push_back(m);
+	//return (int)masses.size() -1;
+ }
+
+int SpringMass::addSpring(Spring *spring)
+{
+    (this->spring) = spring;
+    //return (int)springs.size();
+}
+
+void SpringMass::setGravity(double g)
+{
+	this->gravity = g;
 }

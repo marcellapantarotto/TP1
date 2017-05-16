@@ -37,7 +37,7 @@ Figure::Figure(std::string name)
   id = glutCreateWindow(name.c_str()) ;
 
   // snychronise buffer swapping with OpenGL
-  // also limits the frame rate to the one o the scren
+  // also limits the frame rate to the one o the screen
 #if defined(__APPLE__)
   int swap_interval = 1;
   CGLContextObj cgl_context = CGLGetCurrentContext();
