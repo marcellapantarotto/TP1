@@ -19,10 +19,7 @@ int main(int argc, char** argv)
   Mass m2(Vector2(+.5,0), Vector2(), mass, radius) ;
 
   masses_t masses;
-  // masses.push_back(&m1);
-  // masses.push_back(&m2);
   Spring spring(&m1, &m2, naturalLength, stiffness, damping);
-  // SpringMass springmass(masses, &spring, MOON_GRAVITY);
   SpringMass springmass;
   springmass.setGravity(MOON_GRAVITY);
   springmass.addMass(&m1);

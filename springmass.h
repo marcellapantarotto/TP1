@@ -106,7 +106,6 @@ protected:
 class SpringMass : public Simulation
 {
 public:
-  //pringMass(double gravity=MOON_GRAVITY);
   SpringMass();
   //SpringMass(Mass *mass1, Mass *mass2, double gravity = MOON_GRAVITY);
   //SpringMass(masses_t massVector, Spring *s, double gravity);
@@ -120,14 +119,13 @@ public:
 protected:
   double gravity;
   double dt;
-  Spring *spring;
   double naturalLength;
   double stiffness;
   double damping;
   masses_t masses;
   Mass *mass1;
   Mass *mass2;
-
+  Spring *spring;
 } ;
 
 #endif /* defined(__springmass__) */
