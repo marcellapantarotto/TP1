@@ -13,13 +13,13 @@ And to execute: `./ball`
 
 ### Files
 - **simulation.h**  has the class `Simulation()` witch contains only virtual methods, that are responsible to build the interface between programs.
-- **ball.h**    has the class Ball with it's attributes and methods, this class inherits virtual methods from Simulation class.
+- **ball.h**    has the class `Ball()` with it's attributes and methods, this class inherits virtual methods from Simulation class.
 - **ball.cpp**  desenvolves the methods and constructors of the class Ball and where you will find the set() and get() methods.
 - **test-ball.cpp** defines the time interval (dt) and, besides having the main functions, it has the run function and also calls the methods: `step(dt)`, `display()`, `set()` and `get()`.
 
 ### Class Diagram
 Created with the help of `https://www.lucidchart.com/`, expressed in the `class_diagram.png` file.
-![diagram](https://github.com/marcellapantarotto/TP1/blob/master/class_diagram.png?raw=true)
+![ball diagram](https://github.com/marcellapantarotto/TP1/blob/master/class_diagram.png?raw=true)
 
 ### Graphic
 Expressed in the `result_grafic_plotting.png` file, it was created with the use of GnuPlot version 5.0 patchlevel 3, considering the ball's initial coordinates (x, y) = (0, 0). Using these command lines:
@@ -27,7 +27,7 @@ Expressed in the `result_grafic_plotting.png` file, it was created with the use 
 $ gnuplot
 gnuplot> plot 'result_output'
 ```
-![grafic](https://github.com/marcellapantarotto/TP1/blob/master/result_grafic_plotting.png?raw=true)
+![ball graphic](https://github.com/marcellapantarotto/TP1/blob/master/result_grafic_plotting.png?raw=true)
 
 ### Output
 This represents the programs output, expressed in the `result_output` file. With the ball's initial coordinates (x, y) = (0, 0).
@@ -145,12 +145,12 @@ And to execute: `./springmass`
 ### Files
 - **simulation.h**  has the class `Simulation()` witch contains only virtual methods, that are responsible to build the interface between programs.
 - **springmass.h**  library used to declare the main classes, with each of their methods, used in this part of the project. The classes,  witch can be examined in the class diagram shown below, are `Vector2()` `Mass()` `Spring()` `SpringMass()`. This last one inherits from `Simulation()` class, from the `simulation.h` file.
-- **springmass.cpp**  desenvolves the methods of the classes declared in `springmass.h`. After that, the void method `Mass::step(double dt, double gravity)` takes the time and gravity force to calculate a new position, with it's respective velocity and acceleration. Then the void method `SpringMass::step(double dt)` calls some methods of `Mass()` and `Spring` to calculate the energy and the force of the move.  
+- **springmass.cpp**  desenvolves the methods of the classes declared in `springmass.h`. After that, the void method `Mass::step(double dt, double gravity)` takes the time and gravity force to calculate a new position, with it's respective velocity and acceleration. Then the void method `SpringMass::step(double dt)` calls some methods of `Mass()` and `Spring()` to calculate the energy and the force of the move.
 - **test-springmass.cpp** creates the objects mass1 and mass2, with a connecting spring, end calculates the movement of the balls while they are in free fall. The time interval `(dt)` determined here helps to create the frames for an output, that latter was used to generate the plot analyses. 
 
 ### Class Diagram
 Created with the help of `https://www.lucidchart.com/`, expressed in the `Springmass_classdiagram.png` file.
-![diagram](https://github.com/marcellapantarotto/TP1/blob/master/Springmass_classdiagram.png)
+![springmass diagram](https://github.com/marcellapantarotto/TP1/blob/master/Springmass_classdiagram.png)
 
 ### Graphic
 Expressed in the `springmass_graphic.png` file, it was created considering initial coordinates at: Mass1(x, y) = (-0.5, 0) and Mass2(x, y) = (0.5, 0), and with the use of GnuPlot version 5.0 patchlevel 3. The command lines used were:
@@ -158,7 +158,7 @@ Expressed in the `springmass_graphic.png` file, it was created considering initi
 $ gnuplot
 gnuplot> plot 'output_springmass'
 ```
-![grafic](https://github.com/marcellapantarotto/TP1/blob/master/springmass_graphic.png)
+![springmass graphic](https://github.com/marcellapantarotto/TP1/blob/master/springmass_graphic.png)
 
 ### Output
 This represents the programs output, expressed in the `output_springmass` file, with the initial coordinates: Mass1 = (-0.5, 0) and Mass2 = (0.5, 0).
@@ -365,15 +365,21 @@ This represents the programs output, expressed in the `output_springmass` file, 
  0.745595 	-0.4113
 ```
 ## 3rd Part
-In ths part, I tried to project and animation for the falling ball and springmass from the other parts. And the files used were: `simulation.h`, `graphics.h`, `graphics.cpp` and `test-springmass-graphics.cpp`.
+In ths part, I tried to project and animation for the falling ball and springmass from the other parts. And the files used were: `simulation.h`, `ball.cpp`, `springmass.cpp`, `graphics.h`, `graphics.cpp` and `test-springmass-graphics.cpp`.
 
 ### Compilation
-The command line used to compile the program was first this one: `g++ graphics.cpp springmass.cpp test-springmass-graphics.cpp -lGL lGLU -lglut -o graphics`
+The command line used to execute the **ball's** animation was: `g++ graphics.cpp ball.cpp test-ball-graphics.cpp -lGL -lGLU -lglut -o ball-graphics`
 
-And to execute: `./graphics`
+And to execute: `./ball-graphics`
+
+The command line used to execute the **springmass's** animation was: `g++ graphics.cpp springmass.cpp test-springmass-graphics.cpp -lGL lGLU -lglut -o springmass-graphics`
+
+And to execute: `./springmass-graphics`
 
 ### Files
 - **simulation.h**  has the class `Simulation()` witch contains only virtual methods, that are responsible to build the interface between programs.
-- **graphics.h**    
-- **graphics.cpp**  
+- **ball.cpp**  desenvolves the methods and constructors of the class `Ball()`, set() and get() methods.
+- **springmass.cpp**  desenvolves the methods of the classes `Springmass()`, that calls the method `Mass::step()` to calculate new position and new velocity for the masses and, also calls some methods of `Mass()` and `Spring()` to calculate the energy and the force of the move.
+- **graphics.h** inherets from class `Simulation()` and this is the library that defines the classes `Drawable()` and `Figure()`.
+- **graphics.cpp** desenvolves methods for the animations.
 - **test-springmass-graphics.cpp**
