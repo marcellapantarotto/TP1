@@ -84,13 +84,11 @@ public:
   double getEnergy() const ;
 
 protected:
-/* begin remove */
   double naturalLength ;
   double stiffness ;
   double damping ;
   Mass * mass1 ;
   Mass * mass2 ;
-/* end remove */
 } ;
 
 /* ---------------------------------------------------------------- */
@@ -105,23 +103,18 @@ public:
   void display() ;
   double getEnergy() const ;
   Mass getMass(int i);
-/* begin remove */
   int addMass(Mass m) ;
   void addSpring(int i, int j, double length, double stiffness) ;
   int getMassesLength(void);
-/* end remove */
 
 protected:
   double gravity ;
 
-/* begin remove */
   typedef std::vector<Mass> masses_t ;
   typedef std::vector<Spring> springs_t ;
 
   masses_t masses ;
   springs_t springs ;
-/* end remove */
 } ;
 
 #endif /* defined(__springmass__) */
-

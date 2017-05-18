@@ -53,9 +53,6 @@ int main(int argc, char** argv)
 	const double mass = 0.05 ;
 	const double radius = 0.02 ;
 	const double naturalLength = 0.95 ;
-	
-	// const double stiffness = 1.0;
-	// const double damping = 0.01;
 	const double dt = 1.0/120.0 ;
 
 	Mass m1(Vector2(-.5,0), Vector2(), mass, radius) ;
@@ -66,13 +63,6 @@ int main(int argc, char** argv)
 
 	springmass.display();
 	springmass.draw();
-	//springmass.getLength()
-	// for (int i = 0; i < springmass.masses.size(); ++i)
-	// {
-
-	// 	springmass.display();
-	// 	springmass.draw();
-	// }
 
 	run(&springmass, dt);
 }

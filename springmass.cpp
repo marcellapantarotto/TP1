@@ -58,17 +58,15 @@ double Mass::getMass() const
 double Mass::getEnergy(double gravity) const
 {
   double energy = 0 ;
-/* begin remove */
   double kinetic = 0.5 * mass * velocity.norm2() ;
   double potential = gravity * mass * (position.y - ymin - radius) ;
   energy = kinetic + potential ;
-/* end remove */
+
   return energy ;
 }
 
 void Mass::step(double dt)
 {
-/* begin remove */
   Vector2 accel = force / mass ;
   Vector2 position_ = position + dt * velocity + 0.5 * accel * (dt * dt) ;
 
@@ -87,7 +85,6 @@ void Mass::step(double dt)
   } else {
     velocity.y = - velocity.y ;
   }
-/* end remove */
 }
 
 /* ---------------------------------------------------------------- */
@@ -112,7 +109,7 @@ Mass * Spring::getMass2() const
 Vector2 Spring::getForce() const
 {
   Vector2 F ;
-/* begin remove */
+
   Vector2 v1 = mass2->getVelocity() ;
   Vector2 v2 = mass1->getVelocity() ;
   Vector2 u = mass2->getPosition() - mass1->getPosition() ;
@@ -121,7 +118,7 @@ Vector2 Spring::getForce() const
   double elongationVelocity = dot(v2 - v1, u) ;
   double force = (naturalLength - length) * stiffness + elongationVelocity * damping ;
   F = force * u ;
-/* end remove */
+
   return F ;
 }
 
@@ -160,42 +157,39 @@ SpringMass::SpringMass(double gravity)
 
 void SpringMass::display()
 {
-/* begin remove */
+  // for(int i = 0; i < (this->masses).size(); ++i)
+  // {
+  //   std::cout << masses[i].getPosition().x << " " << masses[i].getPosition().y << std::endl ;
+  // }
 
-  for(int i = 0; i < (this->masses).size(); ++i)
-  {
-    std::cout << masses[i].getPosition().x << " " << masses[i].getPosition().y << std::endl ;
+  for (int i = 0 ; i < (int)masses.size() ; ++i) {
+    std::cout<<masses[i] ;
   }
-
-  // for (int i = 0 ; i < (int)masses.size() ; ++i) {
-  //   std::cout<<masses[i] ;
-  // }
-  // for (int i = 0 ; i < (int)springs.size() ; ++i) {
-  //   std::cout<<springs[i] ;
-  // }
-  // std::cout<<" en:"<<getEnergy() ;
-  // std::cout<<std::endl ;
-/* end remove */
+  for (int i = 0 ; i < (int)springs.size() ; ++i) {
+    std::cout<<springs[i] ;
+  }
+  std::cout<<" en:"<<getEnergy() ;
+  std::cout<<std::endl ;
 }
 
 double SpringMass::getEnergy() const
 {
   double energy = 0 ;
-/* begin remove */
+
   for (int i = 0 ; i < (int)masses.size() ; ++i) {
     energy += masses[i].getEnergy(gravity) ;
   }
   for (int i = 0 ; i < (int)springs.size() ; ++i) {
     energy += springs[i].getEnergy() ;
   }
-/* end remove */
+
   return energy ;
 }
 
 void SpringMass::step(double dt)
 {
   Vector2 g(0,-gravity) ;
-/* begin remove */
+
   for (int i = 0 ; i < (int)masses.size() ; ++i) {
     masses[i].setForce(g * masses[i].getMass()) ;
   }
@@ -207,10 +201,8 @@ void SpringMass::step(double dt)
   for (int i = 0 ; i < (int)masses.size() ; ++i) {
     masses[i].step(dt) ;
   }
-/* end remove */
 }
 
-/* begin remove */
 int SpringMass::addMass(Mass m)
 {
   masses.push_back(m) ;
@@ -221,13 +213,8 @@ void SpringMass::addSpring(int i, int j, double length, double stiffness)
 {
   springs.push_back(Spring(&masses[i], &masses[j], length, stiffness)) ;
 }
-/* end remove */
 
 Mass SpringMass::getMass(int i)
 {
   return this->masses[i];  
-}
-
-int SpringMass::getMassesLength(void){
-  return this->masses.size();
 }
