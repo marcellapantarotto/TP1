@@ -158,7 +158,7 @@ Expressed in the `springmass_graphic.png` file, it was created considering initi
 $ gnuplot
 gnuplot> plot 'output_springmass'
 ```
-![springmass graphic](https://github.com/marcellapantarotto/TP1/blob/master/springmass_graphic.png)
+![springmass graphic](https://github.com/marcellapantarotto/TP1/blob/master/springmass_graphics.png)
 
 ### Output
 This represents the programs first output, expressed in the `output_springmass` file, with the initial coordinates: Mass1 = (-0.5, 0) and Mass2 = (0.5, 0), one on top of the other. This output was necessary for the graph plotting.
