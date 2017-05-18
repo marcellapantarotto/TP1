@@ -18,15 +18,22 @@ class SpringMassDrawable : public SpringMass, public Drawable
 		Figure figure;
 	public:
 		SpringMassDrawable()
-		:SpringMass(), figure("SpringMass")
+		:SpringMass(), figure("Spring Mass")
 		{
 			figure.addDrawable(this);
 		}
 
- 		//void drawCircle(double x, double y, double radius) ;
-  		//void drawLine(double x1, double y1, double x2, double y2, double thickness) ;
 		void draw()
 		{
+			double x1, x2, y1, y2, radius, tickness = 0.5;
+
+			x1 = this->getMass(0).getPosition().x;
+			y1 = this->getMass(0).getPosition().y;
+			x2 = this->getMass(1).getPosition().x;
+			y2 = this->getMass(1).getPosition().y;
+
+			radius = this-> getMass(0).getRadius();
+			
 			figure.drawCircle(x1, y1, radius);
 			figure.drawCircle(x2, y2, radius);
 			figure.drawLine(x1, y1, x2, y2, tickness);
@@ -53,18 +60,19 @@ int main(int argc, char** argv)
 
 	Mass m1(Vector2(-.5,0), Vector2(), mass, radius) ;
 	Mass m2(Vector2(+.5,0), Vector2(), mass, radius) ;
-	//Spring spring(&m1, &m2, naturalLength, stiffness, damping);
-	//springmass.setGravity(MOON_GRAVITY);
 	springmass.addMass(m1);
 	springmass.addMass(m2);
 	springmass.addSpring(0,1, naturalLength, 1.0);
 
+	springmass.display();
+	springmass.draw();
 	//springmass.getLength()
-	for (int i = 0; i < springmass.masses.size(); ++i)
-	{
-		springmass.display();
-		springmass.draw();
-	}
+	// for (int i = 0; i < springmass.masses.size(); ++i)
+	// {
+
+	// 	springmass.display();
+	// 	springmass.draw();
+	// }
 
 	run(&springmass, dt);
 }

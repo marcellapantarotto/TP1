@@ -223,3 +223,11 @@ void SpringMass::addSpring(int i, int j, double length, double stiffness)
 }
 /* end remove */
 
+Mass SpringMass::getMass(int i)
+{
+  return this->masses[i];  
+}
+
+int SpringMass::getMassesLength(void){
+  return this->masses.size();
+}

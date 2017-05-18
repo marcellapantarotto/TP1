@@ -104,10 +104,11 @@ public:
   void step(double dt) ;
   void display() ;
   double getEnergy() const ;
-
+  Mass getMass(int i);
 /* begin remove */
   int addMass(Mass m) ;
   void addSpring(int i, int j, double length, double stiffness) ;
+  int getMassesLength(void);
 /* end remove */
 
 protected:
