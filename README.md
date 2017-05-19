@@ -489,8 +489,8 @@ And to execute: `./springmass-graphics`
 - **graphics.cpp** desenvolves methods for the animations.
 - **test-springmass-graphics.cpp** desenvolves the class `SpringMassDrawable()`, with the void methods `draw()` and `display()`. And has the main function that initializes the masses and spring, to animate.
 
-### Graphic
-Since I was not able to save the animation itself, I printsreened some instances of the animation.
+### Graphics
+Since I was not able to save the animation itself, I print screened some instances of the animation.
 
 **Ball:**
 
