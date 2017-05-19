@@ -1,5 +1,5 @@
 # TP1
-This project aims to simulate bouncing balls, in free fall, inside a delimited box (1x1). It is desenvolved in C++ and compiled with G++ GNU Compiler version 5.4.0. It requests, the `iostream` and `stdio` libraries.
+This project aims to simulate bouncing balls, in free fall, inside a delimited box (1x1). It is developed in C++ and compiled with G++ GNU Compiler version 5.4.0. It requests, the `iostream` and `stdio` libraries.
 
 ## 1st Part
 For this part, the aim is to simulate one singular ball bouncing in free fall. And the files used were: `simulation.h`, `ball.h`, `ball.cpp` and `test-ball.cpp`.
@@ -488,3 +488,16 @@ And to execute: `./springmass-graphics`
 - **graphics.h** inherets from class `Simulation()` and this is the library that defines the classes `Drawable()` and `Figure()`.
 - **graphics.cpp** desenvolves methods for the animations.
 - **test-springmass-graphics.cpp** desenvolves the class `SpringMassDrawable()`, with the void methods `draw()` and `display()`. And has the main function that initializes the masses and spring, to animate.
+
+### Graphic
+Since I was not able to save the animation itself, I printsreened some instances of the animation.
+
+**Ball:**
+![ball animation 1](https://github.com/marcellapantarotto/TP1/blob/master/ball_animation1.png)
+![ball animation 2](https://github.com/marcellapantarotto/TP1/blob/master/ball_animation2.png)
+![ball animation 3](https://github.com/marcellapantarotto/TP1/blob/master/ball_animation3.png)
+
+**Springmass:**
+![springmass animation 1](https://github.com/marcellapantarotto/TP1/blob/master/springmass_animation1.png)
+![springmass animation 2](https://github.com/marcellapantarotto/TP1/blob/master/springmass_animation2.png)
+![springmass animation 3](https://github.com/marcellapantarotto/TP1/blob/master/springmass_animation3.png)
