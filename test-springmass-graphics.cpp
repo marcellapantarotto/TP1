@@ -50,13 +50,14 @@ int main(int argc, char** argv)
   	glutInit(&argc,argv) ;
   	SpringMassDrawable springmass ;
 
-	const double mass = 0.05 ;
+	const double mass1 = 0.05 ;
+	const double mass2 = 1.0;
 	const double radius = 0.02 ;
 	const double naturalLength = 0.95 ;
 	const double dt = 1.0/120.0 ;
 
-	Mass m1(Vector2(-.5,0), Vector2(), mass, radius) ;
-	Mass m2(Vector2(+.5,0), Vector2(), mass, radius) ;
+	Mass m1(Vector2(-.5,0), Vector2(), mass1, radius) ;
+	Mass m2(Vector2(+.5,0.5), Vector2(), mass2, radius) ;
 	springmass.addMass(m1);
 	springmass.addMass(m2);
 	springmass.addSpring(0,1, naturalLength, 1.0);
