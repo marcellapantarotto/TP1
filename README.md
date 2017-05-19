@@ -493,11 +493,13 @@ And to execute: `./springmass-graphics`
 Since I was not able to save the animation itself, I printsreened some instances of the animation.
 
 **Ball:**
+
 ![ball animation 1](https://github.com/marcellapantarotto/TP1/blob/master/ball_animation1.png)
 ![ball animation 2](https://github.com/marcellapantarotto/TP1/blob/master/ball_animation2.png)
 ![ball animation 3](https://github.com/marcellapantarotto/TP1/blob/master/ball_animation3.png)
 
 **Springmass:**
+
 ![springmass animation 1](https://github.com/marcellapantarotto/TP1/blob/master/springmass_animation1.png)
 ![springmass animation 2](https://github.com/marcellapantarotto/TP1/blob/master/springmass_animation2.png)
 ![springmass animation 3](https://github.com/marcellapantarotto/TP1/blob/master/springmass_animation3.png)
