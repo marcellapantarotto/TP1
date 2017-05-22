@@ -19,7 +19,7 @@ And to execute: `./ball`
 
 ### Class Diagram
 Created with the help of `https://www.lucidchart.com/`, expressed in the `class_diagram.png` file.
-![ball diagram](https://github.com/marcellapantarotto/TP1/blob/master/class_diagram.png?raw=true)
+![ball class diagram](https://github.com/marcellapantarotto/TP1/blob/master/class_diagram.png?raw=true)
 
 ### Graphic
 Expressed in the `result_grafic_plotting.png` file, it was created with the use of GnuPlot version 5.0 patchlevel 3, considering the ball's initial coordinates (x, y) = (0, 0). Using these command lines:
@@ -150,7 +150,7 @@ And to execute: `./springmass`
 
 ### Class Diagram
 Created with the help of `https://www.lucidchart.com/`, expressed in the `Springmass_classdiagram.png` file.
-![springmass diagram](https://github.com/marcellapantarotto/TP1/blob/master/Springmass_classdiagram.png)
+![springmass class diagram](https://github.com/marcellapantarotto/TP1/blob/master/Springmass_classdiagram.png)
 
 ### Graphic
 Expressed in the `springmass_graphic.png` file, it was created considering initial coordinates at: Mass1(x, y) = (-0.5, 0) and Mass2(x, y) = (0.5, 0), and with the use of GnuPlot version 5.0 patchlevel 3. The command lines used were:
@@ -489,13 +489,17 @@ And to execute: `./springmass-graphics`
 - **graphics.cpp** desenvolves methods for the animations.
 - **test-springmass-graphics.cpp** desenvolves the class `SpringMassDrawable()`, with the void methods `draw()` and `display()`. And has the main function that initializes the masses and spring, to animate.
 
+### Class Diagram
+Created with the help of `https://www.lucidchart.com/`, expressed in the `class_diagram.png` file.
+![graphics class diagram](https://github.com/marcellapantarotto/TP1/blob/master/graphics_classdiagram.png)
+
 ### Graphics
 Since I was not able to save the animation itself, I print screened some instances of the animation.
 
 **Ball:**
 
-![ball animation 1](https://github.com/marcellapantarotto/TP1/blob/master/ball_animation.png)
+![ball animation](https://github.com/marcellapantarotto/TP1/blob/master/ball_animation.png)
 
 **Springmass:**
 
-![springmass animation 1](https://github.com/marcellapantarotto/TP1/blob/master/springmass_animation.png)
+![springmass animation](https://github.com/marcellapantarotto/TP1/blob/master/springmass_animation.png)
