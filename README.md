@@ -490,7 +490,7 @@ And to execute: `./springmass-graphics`
 - **test-springmass-graphics.cpp** desenvolves the class `SpringMassDrawable()`, with the void methods `draw()` and `display()`. And has the main function that initializes the masses and spring, to animate.
 
 ### Class Diagram
-Created with the help of `https://www.lucidchart.com/`, expressed in the `class_diagram.png` file.
+Created with the help of `https://www.lucidchart.com/`, expressed in the `graphics_classdiagram.png` file.
 ![graphics class diagram](https://github.com/marcellapantarotto/TP1/blob/master/graphics_classdiagram.png)
 
 ### Graphics
