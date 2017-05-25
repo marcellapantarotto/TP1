@@ -1,5 +1,8 @@
 # TP1
-This project aims to simulate bouncing balls, in free fall, inside a delimited box (1x1). It is developed in C++ and compiled with G++ GNU Compiler version 5.4.0. It requests, the `iostream` and `stdio` libraries.
+This project aims to simulate bouncing balls, in free fall, inside a delimited box (1x1). It is developed in C++ and compiled with G++ GNU Compiler version 5.4.0. It requests, the `iostream` and `stdio` libraries. As well as the OpenGL/GLUT library, for graphic visualization, that can be installed with this following code:
+```
+sudo apt-get install freeglut3 freeglut3-dev
+```
 
 ## 1st Part
 For this part, the aim is to simulate one singular ball bouncing in free fall. And the files used were: `simulation.h`, `ball.h`, `ball.cpp` and `test-ball.cpp`.
