@@ -21,6 +21,10 @@ And to execute: `./ball`
 Created with the help of `https://www.lucidchart.com/`, expressed in the `class_diagram.png` file.
 ![ball class diagram](https://github.com/marcellapantarotto/TP1/blob/master/class_diagram.png?raw=true)
 
+### Sequence Diagram
+Created with the help of `https://www.lucidchart.com/`, expressed in the `ball_sequenceDiagram.png` file.
+![springmass sequence diagram](https://github.com/marcellapantarotto/TP1/blob/master/ball_sequenceDiagram.png)
+
 ### Graphic
 Expressed in the `result_grafic_plotting.png` file, it was created with the use of GnuPlot version 5.0 patchlevel 3, considering the ball's initial coordinates (x, y) = (0, 0). Using these command lines:
 ```
@@ -151,6 +155,11 @@ And to execute: `./springmass`
 ### Class Diagram
 Created with the help of `https://www.lucidchart.com/`, expressed in the `Springmass_classdiagram.png` file.
 ![springmass class diagram](https://github.com/marcellapantarotto/TP1/blob/master/Springmass_classdiagram.png)
+
+### Sequence Diagram
+Created with the help of `https://www.lucidchart.com/`, expressed in the `springmass_sequenceDiagram.png` file.
+![springmass sequence diagram](https://github.com/marcellapantarotto/TP1/blob/master/springmass_sequenceDiagram.png)
+
 
 ### Graphic
 Expressed in the `springmass_graphic.png` file, it was created considering initial coordinates at: Mass1(x, y) = (-0.5, 0) and Mass2(x, y) = (0.5, 0), and with the use of GnuPlot version 5.0 patchlevel 3. The command lines used were:
@@ -492,6 +501,10 @@ And to execute: `./springmass-graphics`
 ### Class Diagram
 Created with the help of `https://www.lucidchart.com/`, expressed in the `graphics_classdiagram.png` file.
 ![graphics class diagram](https://github.com/marcellapantarotto/TP1/blob/master/graphics_classdiagram.png)
+
+### Sequence Diagram
+Created with the help of `https://www.lucidchart.com/`, expressed in the `graphics_sequenceDiagram.png` file.
+![springmass sequence diagram](https://github.com/marcellapantarotto/TP1/blob/master/graphics_sequenceDiagram.png)
 
 ### Graphics
 Since I was not able to save the animation itself, I print screened some instances of the animation.
