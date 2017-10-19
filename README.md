@@ -1,7 +1,4 @@
 # TP1
-Object-Oriented Programming
-
-
 This project aims to simulate bouncing balls, in free fall, inside a delimited box (1x1). It is developed in C++ and compiled with G++ GNU Compiler version 5.4.0. It requests, the `iostream` and `stdio` libraries. As well as the OpenGL/GLUT library, for graphic visualization, that can be installed with this following code:
 ```
 sudo apt-get install freeglut3 freeglut3-dev
